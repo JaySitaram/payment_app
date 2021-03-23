@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rekur_fluter/globals/colors.dart';
 
 class CreditCardScreen extends StatefulWidget {
   @override
@@ -350,12 +351,14 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.pink),
+                      color: AppColors.pinkButtonColor),
                   margin: EdgeInsets.symmetric(horizontal: 5.0),
                   child: MaterialButton(
                     onPressed: () {},
                     child: new Text(
                       "Save and create new with same payment method",
+                      textAlign: TextAlign.justify,
+                      maxLines: 2,
                       style: Theme.of(context)
                           .primaryTextTheme
                           .button
@@ -370,7 +373,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                   margin: EdgeInsets.symmetric(horizontal: 5.0),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.lightGreen),
+                      color: AppColors.greenAccentColor),
                   child: MaterialButton(
                     onPressed: () {},
                     child: new Text(

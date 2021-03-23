@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rekur_fluter/globals/colors.dart';
+import 'package:rekur_fluter/pages/about_screen.dart';
 import 'package:rekur_fluter/pages/credit_card_screen.dart';
 import 'package:rekur_fluter/pages/transaction_screen.dart';
+import 'package:rekur_fluter/pages/upgrade_screen.dart';
 
 import 'new_screen.dart';
 
@@ -30,11 +32,28 @@ class _HomePageState extends State<HomePage> {
               insetPadding:
                   EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(
+                      color: Colors.grey, width: 1, style: BorderStyle.solid)),
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: CreditCardScreen(),
+            ));
+  }
+
+  showMyAboutDialog() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) => Dialog(
+              insetPadding:
+                  EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(
+                      color: Colors.grey, width: 1, style: BorderStyle.solid)),
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              child: AboutScreen(),
             ));
   }
 
@@ -44,11 +63,22 @@ class _HomePageState extends State<HomePage> {
         builder: (BuildContext context) => Dialog(
               insetPadding: EdgeInsets.all(10.0),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: BorderSide(
+                      color: Colors.grey, width: 1, style: BorderStyle.solid)),
               elevation: 0,
               backgroundColor: Colors.transparent,
-              child: NewScreen(),
+              child: NewScreen(
+                onPressed: (value) async {
+                  print(value);
+                  Navigator.pop(context);
+                  if (value) {
+                    return await showUpgradeDialog();
+                  } else {
+                    return await showMyAboutDialog();
+                  }
+                },
+              ),
             ));
   }
 
@@ -95,6 +125,19 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         body: TransactionScreen());
+  }
+
+  showUpgradeDialog() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) => Dialog(
+            insetPadding: EdgeInsets.all(10.0),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+            elevation: 0,
+            backgroundColor: Colors.transparent,
+            child: UpgradeScreen()));
   }
 }
 

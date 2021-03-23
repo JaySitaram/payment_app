@@ -1,7 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rekur_fluter/pages/upgrade_screen.dart';
 
 class NewScreen extends StatefulWidget {
+  Function onPressed;
+
+  NewScreen({this.onPressed});
   @override
   _NewScreenState createState() => _NewScreenState();
 }
@@ -61,7 +65,7 @@ class _NewScreenState extends State<NewScreen> {
                     Navigator.pop(context);
                   },
                   icon: Icon(
-                    Icons.close,
+                    Icons.highlight_remove_sharp,
                     color: Colors.white,
                   ),
                 ),
@@ -124,7 +128,7 @@ class _NewScreenState extends State<NewScreen> {
                     child: Row(
                       children: [
                         Expanded(
-                          flex: 2,
+                          flex: 1,
                           child: Text("DEFAULT CURRENCY",
                               style: Theme.of(context)
                                   .primaryTextTheme
@@ -274,12 +278,17 @@ class _NewScreenState extends State<NewScreen> {
                 Divider(thickness: 1, color: Colors.grey),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 15.0),
-                  child: Text("ABOUT",
-                      textAlign: TextAlign.start,
-                      style: Theme.of(context)
-                          .primaryTextTheme
-                          .bodyText1
-                          .copyWith(color: Colors.white)),
+                  child: GestureDetector(
+                    onTap: () {
+                      widget.onPressed(false);
+                    },
+                    child: Text("ABOUT",
+                        textAlign: TextAlign.start,
+                        style: Theme.of(context)
+                            .primaryTextTheme
+                            .bodyText1
+                            .copyWith(color: Colors.white)),
+                  ),
                 ),
                 Divider(thickness: 1, color: Colors.grey),
                 Padding(
@@ -306,7 +315,9 @@ class _NewScreenState extends State<NewScreen> {
                       color: Colors.green,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0)),
-                      onPressed: () {},
+                      onPressed: () {
+                        widget.onPressed(true);
+                      },
                       child: new Text(
                         "UPGRADE",
                         style: Theme.of(context)
