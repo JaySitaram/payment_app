@@ -9,6 +9,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Directory directory = await getApplicationDocumentsDirectory();
   Hive.init(directory.path);
+  
   Hive.openBox("Transaction");
   runApp(MyApp());
 }
