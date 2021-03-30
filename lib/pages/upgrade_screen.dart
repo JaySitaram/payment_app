@@ -16,7 +16,6 @@ class _UpgradeScreenState extends State<UpgradeScreen> {
 
   _getUpgradeContent() {
     return Container(
-        color: Colors.black,
         child: Column(
           children: [
             SizedBox(

@@ -52,27 +52,32 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('images/splash_icon.png',
-            color: Colors.white,
-            height: MediaQuery.of(context).size.width/2,
-            width: MediaQuery.of(context).size.width/2,),
+            Image.asset(
+              'images/splash_icon.png',
+              color: Colors.white,
+              height: MediaQuery.of(context).size.width / 1.5,
+              width: MediaQuery.of(context).size.width / 1.5,
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
             Text(
               "Rekur",
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .headline2
-                  .copyWith(color: Colors.white, fontFamily: 'MONTSERRAT'),
+              style: Theme.of(context).primaryTextTheme.headline2.copyWith(
+                  color: Colors.white,
+                  fontFamily: 'MONTSERRAT',
+                  fontWeight: FontWeight.bold),
             ),
             SizedBox(
               height: 80.0,
             ),
             Text(
-              "The smarter easier way to \n manage your recurring billing",
+              "The smarter,easier way to \n manage your recurring payments",
               textAlign: TextAlign.center,
-              style: Theme.of(context)
-                  .primaryTextTheme
-                  .headline6
-                  .copyWith(color: Colors.white, fontFamily: 'MONTSERRAT'),
+              style: Theme.of(context).primaryTextTheme.headline6.copyWith(
+                  color: Colors.white,
+                  fontFamily: 'FONTAWESOME',
+                  fontWeight: FontWeight.bold),
             )
           ],
         ),

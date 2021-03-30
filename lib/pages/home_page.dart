@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rekur_fluter/globals/colors.dart';
 import 'package:rekur_fluter/pages/about_screen.dart';
 import 'package:rekur_fluter/pages/credit_card_screen.dart';
@@ -16,6 +17,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   PageController _pageController = PageController(initialPage: 0);
 
+ 
+
+ 
   void _onItemTapped(int index) {
     _selectedIndex = index;
     if (_selectedIndex == 1) {
@@ -85,7 +89,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
         bottomNavigationBar: Container(
           height: MediaQuery.of(context).size.width / 6,
           child: BottomAppBar(
@@ -120,6 +123,7 @@ class _HomePageState extends State<HomePage> {
                         },
                         icon: Icon(Icons.settings,
                             size: 40.0, color: Colors.white))),
+
               ],
             ),
           ),
@@ -140,141 +144,3 @@ class _HomePageState extends State<HomePage> {
             child: UpgradeScreen()));
   }
 }
-
-class TransactionModel {
-  String cardNumber;
-  String cardName;
-  String cardPrice;
-  String cardExpiry;
-  String imageName;
-
-  TransactionModel(
-      {this.cardNumber,
-      this.imageName,
-      this.cardName,
-      this.cardPrice,
-      this.cardExpiry});
-}
-
-List<TransactionModel> listTransaction = [
-  TransactionModel(
-      cardNumber: "0023",
-      cardName: "IPhone Payment",
-      cardPrice: "${49.00}",
-      imageName: 'images/Payment/Amex.png',
-      cardExpiry: "06/02/20"),
-  TransactionModel(
-      cardNumber: "7322",
-      cardName: "Gardener",
-      cardPrice: "${80}",
-      imageName: 'images/Payment/Bank Transfer.png',
-      cardExpiry: "08/08/18"),
-  TransactionModel(
-      cardNumber: "1212",
-      cardName: "Insurance",
-      cardPrice: "${1200}",
-      imageName: 'images/Payment/Cash.png',
-      cardExpiry: "03/03/19"),
-  TransactionModel(
-      cardNumber: "4433",
-      cardName: "Trello",
-      imageName: 'images/Payment/Check.png',
-      cardPrice: "${19.99}",
-      cardExpiry: "11/04/17"),
-  TransactionModel(
-      cardNumber: "0023",
-      imageName: 'images/Payment/Discover.png',
-      cardName: "IPhone Payment",
-      cardPrice: "${49.00}",
-      cardExpiry: "06/02/20"),
-  TransactionModel(
-      cardNumber: "7322",
-      cardName: "Gardener",
-      imageName: 'images/Payment/Mastercard.png',
-      cardPrice: "${80}",
-      cardExpiry: "08/08/18"),
-  TransactionModel(
-      cardNumber: "1212",
-      cardName: "Insurance",
-      imageName: 'images/Payment/Other.png',
-      cardPrice: "${1200}",
-      cardExpiry: "03/03/19"),
-  TransactionModel(
-      cardNumber: "4433",
-      cardName: "Trello",
-      imageName: 'images/Payment/PayPal.png',
-      cardPrice: "${19.99}",
-      cardExpiry: "11/04/17"),
-  TransactionModel(
-      cardNumber: "0023",
-      cardName: "IPhone Payment",
-      imageName: 'images/Payment/Visa.png',
-      cardPrice: "${49.00}",
-      cardExpiry: "06/02/20"),
-  TransactionModel(
-      cardNumber: "7322",
-      cardName: "Gardener",
-      imageName: 'images/Payment/Visa.png',
-      cardPrice: "${80}",
-      cardExpiry: "08/08/18"),
-  TransactionModel(
-      cardNumber: "1212",
-      cardName: "Insurance",
-      imageName: 'images/Payment/Zelle.png',
-      cardPrice: "${1200}",
-      cardExpiry: "03/03/19"),
-  TransactionModel(
-      cardNumber: "4433",
-      cardName: "Trello",
-      imageName: 'images/Payment/Amex.png',
-      cardPrice: "${19.99}",
-      cardExpiry: "11/04/17"),
-  TransactionModel(
-      cardNumber: "0023",
-      cardName: "IPhone Payment",
-      imageName: 'images/Payment/Bank Transfer.png',
-      cardPrice: "${49.00}",
-      cardExpiry: "06/02/20"),
-  TransactionModel(
-      cardNumber: "7322",
-      cardName: "Gardener",
-      imageName: 'images/Payment/Cash.png',
-      cardPrice: "${80}",
-      cardExpiry: "08/08/18"),
-  TransactionModel(
-      cardNumber: "1212",
-      cardName: "Insurance",
-      imageName: 'images/Payment/Check.png',
-      cardPrice: "${1200}",
-      cardExpiry: "03/03/19"),
-  TransactionModel(
-      cardNumber: "4433",
-      cardName: "Trello",
-      imageName: 'images/Payment/Discover.png',
-      cardPrice: "${19.99}",
-      cardExpiry: "11/04/17"),
-  TransactionModel(
-      cardNumber: "0023",
-      cardName: "IPhone Payment",
-      imageName: 'images/Payment/Mastercard.png',
-      cardPrice: "${49.00}",
-      cardExpiry: "06/02/20"),
-  TransactionModel(
-      cardNumber: "7322",
-      cardName: "Gardener",
-      imageName: 'images/Payment/Other.png',
-      cardPrice: "${80}",
-      cardExpiry: "08/08/18"),
-  TransactionModel(
-      cardNumber: "1212",
-      cardName: "Insurance",
-      imageName: 'images/Payment/PayPal.png',
-      cardPrice: "${1200}",
-      cardExpiry: "03/03/19"),
-  TransactionModel(
-      cardNumber: "4433",
-      cardName: "Trello",
-      imageName: 'images/Payment/Visa.png',
-      cardPrice: "${19.99}",
-      cardExpiry: "11/04/17"),
-];

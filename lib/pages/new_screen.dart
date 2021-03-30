@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:rekur_fluter/globals/app_themes.dart';
 import 'package:rekur_fluter/pages/upgrade_screen.dart';
 
 class NewScreen extends StatefulWidget {
@@ -35,7 +37,6 @@ class _NewScreenState extends State<NewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
       body: _getCreditCardContent(),
     );
   }
@@ -218,11 +219,12 @@ class _NewScreenState extends State<NewScreen> {
                           flex: 1,
                           child: Container(
                             width: 120.0,
-                            child: CupertinoSwitch(
-                              onChanged: toggleSwitch,
-                              value: isSwitched,
-                              activeColor: Colors.blue,
-                            ),
+                            child:CupertinoSwitch(
+    value: Provider.of<AppStateNotifier>(context,listen: false).isDarkMode,
+    onChanged: (boolVal) {
+        Provider.of<AppStateNotifier>(context,listen: false).updateTheme(boolVal);
+    },
+),
                           ),
                         ),
                       ],
