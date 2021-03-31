@@ -6,7 +6,7 @@ import 'package:rekur_fluter/pages/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
+  // MobileAds.instance.initialize();
   
   runApp(
     ChangeNotifierProvider<AppStateNotifier>(

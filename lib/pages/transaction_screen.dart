@@ -14,7 +14,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
   TextEditingController _searchController = TextEditingController();
 
   DatabaseHelper helper;
-  BannerAd myBanner;
+  // BannerAd myBanner;
   List<TransactionModel> transactionList = [];
   List<Color> _colors = [AppColors.card1Color, AppColors.card2Color];
   List<double> _stops = [0.0, 0.7];
@@ -25,23 +25,23 @@ class _TransactionScreenState extends State<TransactionScreen> {
     super.initState();
     helper = DatabaseHelper.instance;
     getValues();
-    myBanner = BannerAd(
-      adUnitId: 'ca-app-pub-3940256099942544~3347511713',
-      size: AdSize.banner,
-      request: AdRequest(),
-      listener: AdListener(),
-    );
+    // myBanner = BannerAd(
+    //   adUnitId: 'ca-app-pub-3940256099942544~3347511713',
+    //   size: AdSize.banner,
+    //   request: AdRequest(),
+    //   listener: AdListener(),
+    // );
 
-    final AdListener listener = AdListener(
-      onAdLoaded: (Ad ad) => print('Ad loaded.'),
-      onAdFailedToLoad: (Ad ad, LoadAdError error) {
-        print('Ad failed to load: $error');
-      },
-      onAdOpened: (Ad ad) => print('Ad opened.'),
-      onAdClosed: (Ad ad) => print('Ad closed.'),
-      onApplicationExit: (Ad ad) => print('Left application.'),
-    );
-    myBanner.load();
+    // final AdListener listener = AdListener(
+    //   onAdLoaded: (Ad ad) => print('Ad loaded.'),
+    //   onAdFailedToLoad: (Ad ad, LoadAdError error) {
+    //     print('Ad failed to load: $error');
+    //   },
+    //   onAdOpened: (Ad ad) => print('Ad opened.'),
+    //   onAdClosed: (Ad ad) => print('Ad closed.'),
+    //   onApplicationExit: (Ad ad) => print('Left application.'),
+    // );
+    // myBanner.load();
   }
 
   void getValues() async {
@@ -228,10 +228,10 @@ class _TransactionScreenState extends State<TransactionScreen> {
                     ),
                   ),
                 ]),
-                Expanded(
-                  flex: 1,
-                  child: AdWidget(ad: myBanner),
-                ),
+                // Expanded(
+                //   flex: 1,
+                //   child: AdWidget(ad: myBanner),
+                // ),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
