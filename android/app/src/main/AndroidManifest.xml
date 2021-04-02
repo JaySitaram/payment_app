@@ -4,6 +4,9 @@
    <application
         android:label="rekur_fluter"
         android:icon="@mipmap/ic_launcher">
+         <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-8470879102825888~5020989637"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
@@ -19,9 +22,7 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
-            <meta-data
-                android:name="com.google.android.gms.ads.APPLICATION_ID"
-                android:value="ca-app-pub-3940256099942544~3347511713"/>
+           
             <!-- Displays an Android View that continues showing the launch screen
                  Drawable until Flutter paints its first frame, then this splash
                  screen fades out. A splash screen is useful to avoid any visual

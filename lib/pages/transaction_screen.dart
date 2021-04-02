@@ -1,9 +1,11 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rekur_fluter/globals/colors.dart';
 import 'package:rekur_fluter/globals/database_helper.dart';
 import 'package:rekur_fluter/models/transaction.dart';
 import 'package:rekur_fluter/pages/home_page.dart';
+
+const String testDevice = 'YOUR_DEVICE_ID';
 
 class TransactionScreen extends StatefulWidget {
   @override
@@ -14,34 +16,72 @@ class _TransactionScreenState extends State<TransactionScreen> {
   TextEditingController _searchController = TextEditingController();
 
   DatabaseHelper helper;
-  // BannerAd myBanner;
   List<TransactionModel> transactionList = [];
-  List<Color> _colors = [AppColors.card1Color, AppColors.card2Color];
+  List<Color> _colors1 = [Color(0xFF2EC0B4), Color(0xFF3257A7)];
+  List<Color> _colors2 = [Color(0xFF5F0BF7), Color(0xFF9527EA)];
   List<double> _stops = [0.0, 0.7];
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevice != null ? <String>[testDevice] : null,
+    keywords: <String>['foo', 'bar'],
+    contentUrl: 'http://foo.com/bar.html',
+    childDirected: true,
+    nonPersonalizedAds: true,
+  );
+
+  BannerAd _bannerAd;
+  NativeAd _nativeAd;
+  InterstitialAd _interstitialAd;
+  int _coins = 0;
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+      adUnitId: BannerAd.testAdUnitId,
+      size: AdSize.banner,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("BannerAd event $event");
+      },
+    );
+  }
+
+  InterstitialAd createInterstitialAd() {
+    return InterstitialAd(
+      adUnitId: InterstitialAd.testAdUnitId,
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("InterstitialAd event $event");
+      },
+    );
+  }
+
+  NativeAd createNativeAd() {
+    return NativeAd(
+      adUnitId: NativeAd.testAdUnitId,
+      factoryId: 'adFactoryExample',
+      targetingInfo: targetingInfo,
+      listener: (MobileAdEvent event) {
+        print("$NativeAd event $event");
+      },
+    );
+  }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     helper = DatabaseHelper.instance;
     getValues();
-    // myBanner = BannerAd(
-    //   adUnitId: 'ca-app-pub-3940256099942544~3347511713',
-    //   size: AdSize.banner,
-    //   request: AdRequest(),
-    //   listener: AdListener(),
-    // );
-
-    // final AdListener listener = AdListener(
-    //   onAdLoaded: (Ad ad) => print('Ad loaded.'),
-    //   onAdFailedToLoad: (Ad ad, LoadAdError error) {
-    //     print('Ad failed to load: $error');
-    //   },
-    //   onAdOpened: (Ad ad) => print('Ad opened.'),
-    //   onAdClosed: (Ad ad) => print('Ad closed.'),
-    //   onApplicationExit: (Ad ad) => print('Left application.'),
-    // );
-    // myBanner.load();
+    FirebaseAdMob.instance.initialize(appId: FirebaseAdMob.testAppId);
+    _bannerAd = createBannerAd()..load();
+    _bannerAd.show();
+    RewardedVideoAd.instance.listener =
+        (RewardedVideoAdEvent event, {String rewardType, int rewardAmount}) {
+      print("RewardedVideoAd event $event");
+      if (event == RewardedVideoAdEvent.rewarded) {
+        setState(() {
+          _coins += rewardAmount;
+        });
+      }
+    };
   }
 
   void getValues() async {
@@ -75,8 +115,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                          colors: _colors,
-                          stops: _stops,
+                          colors: _colors2,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomLeft,
                         )),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -106,8 +147,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                          colors: _colors,
-                          stops: _stops,
+                          colors: _colors1,
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomLeft,
                         )),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,

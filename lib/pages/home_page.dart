@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:rekur_fluter/globals/colors.dart';
 import 'package:rekur_fluter/pages/about_screen.dart';
 import 'package:rekur_fluter/pages/credit_card_screen.dart';

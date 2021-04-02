@@ -5,9 +5,9 @@ class AppTheme {
   AppTheme._();
  
   static final ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.teal,
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      color: Colors.teal,
+      color: Colors.white,
       iconTheme: IconThemeData(
         color: Colors.white,
       ),
@@ -19,7 +19,7 @@ class AppTheme {
       secondary: Colors.red,
     ),
     cardTheme: CardTheme(
-      color: Colors.teal,
+      color: Colors.white,
     ),
     iconTheme: IconThemeData(
       color: Colors.white54,
