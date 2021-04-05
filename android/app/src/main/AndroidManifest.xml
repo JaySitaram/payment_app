@@ -7,6 +7,9 @@
          <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="ca-app-pub-8470879102825888~5020989637"/>
+       <meta-data
+           android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+           android:value="true"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
