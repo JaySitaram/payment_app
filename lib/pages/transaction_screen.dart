@@ -18,8 +18,9 @@ class _TransactionScreenState extends State<TransactionScreen> {
   DatabaseHelper helper;
   List<TransactionModel> transactionList = [];
   List<Color> _colors1 = [Color(0xFF2EC0B4), Color(0xFF3257A7)];
-  List<Color> _colors2 = [Color(0xFF5F0BF7), Color(0xFF9527EA)];
-  List<double> _stops = [0.0, 0.7];
+  List<Color> _colors2 = [Color(0xFF5F0BF7), Colors.purple];
+  List<double> _stops2 = [0.0,0.7];
+  List<double> _stops1=[0.0,0.7];
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
     testDevices: testDevice != null ? <String>[testDevice] : null,
     keywords: <String>['foo', 'bar'],
@@ -110,15 +111,16 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       flex: 1,
                       child: Container(
                         margin: EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 7.0),
+                            horizontal: 10.0, vertical: 7.0),
                         width: MediaQuery.of(context).size.width / 3,
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                          colors: _colors2,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomLeft,
-                        )),
+                              colors: _colors2,
+                              stops: _stops2,
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomLeft,
+                            )),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -142,28 +144,30 @@ class _TransactionScreenState extends State<TransactionScreen> {
                       flex: 1,
                       child: Container(
                         margin: EdgeInsets.symmetric(
-                            horizontal: 15.0, vertical: 7.0),
+                            horizontal: 10.0, vertical: 7.0),
                         width: MediaQuery.of(context).size.width / 3,
                         height: MediaQuery.of(context).size.width / 2.5,
                         decoration: BoxDecoration(
                             gradient: LinearGradient(
-                          colors: _colors1,
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomLeft,
-                        )),
+                              colors: _colors1,
+                              stops: _stops1,
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomLeft,
+                            )),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("\$${365.84}",
                                 style: Theme.of(context)
                                     .primaryTextTheme
-                                    .headline5
+                                    .headline4
                                     .copyWith(color: Colors.white)),
+                            SizedBox(height: 10.0,),        
                             Text("Average Spend/Months",
                                 textAlign: TextAlign.center,
                                 style: Theme.of(context)
                                     .primaryTextTheme
-                                    .headline5
+                                    .headline6
                                     .copyWith(color: Colors.white))
                           ],
                         ),
@@ -214,7 +218,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                         child: TextFormField(
                           decoration: InputDecoration(
                             contentPadding:
-                                EdgeInsets.symmetric(horizontal: 20.0),
+                            EdgeInsets.symmetric(horizontal: 20.0),
                             border: InputBorder.none,
                           ),
                           controller: _searchController,
@@ -243,7 +247,7 @@ class _TransactionScreenState extends State<TransactionScreen> {
                 ),
                 Row(children: [
                   Expanded(
-                      flex: 4,
+                      flex: 3,
                       child: Text("Rekur",
                           style: Theme.of(context)
                               .primaryTextTheme

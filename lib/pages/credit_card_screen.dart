@@ -14,7 +14,8 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
   GlobalKey<ScaffoldState> _scaffoldState = GlobalKey();
 
   DatabaseHelper helper;
-  var value1, value2, value3, value4, value5;
+  var _selectedIndex=0;
+  var value1, value2, value3, value4, value5,values;
 
   @override
   void initState() {
@@ -28,19 +29,25 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
     return Scaffold(
       key: _scaffoldState,
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.black,
       body: _getCreditCardContent(),
     );
   }
 
   _getCreditCardContent() {
     return SingleChildScrollView(
-      child: Form(
+      child: Container(
+        decoration:BoxDecoration(
+          borderRadius:BorderRadius.circular(20.0)
+        ),
+        child:Form(
         key: _formState,
         child: Container(
           margin: EdgeInsets.all(10.0),
+          
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+            
               Row(
                 children: [
                   Expanded(
@@ -68,6 +75,29 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                   ),
                 ],
               ),
+                Image.asset(paymentImages[_selectedIndex]),
+              DropdownButtonHideUnderline(
+            child: DropdownButton(
+                value: values,
+                dropdownColor: Colors.white,
+                items: paymentNames.map((v) {
+                
+                  return DropdownMenuItem(
+                    child: Text(v),
+                    value: v,
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  setState(() {
+                    for(int i=0;i<paymentNames.length;i++){
+                      if(paymentNames[i]==value){
+                        _selectedIndex=i-1;
+                      }
+                    }
+                    values = value;
+                  });
+                })
+          ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                 margin: EdgeInsets.symmetric(vertical: 30.0),
@@ -78,6 +108,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                 ),
                 child: Column(
                   children: [
+                      
                     Row(
                       children: [
                         Expanded(
@@ -135,25 +166,7 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                                   content: Text(
                                       "Payment Method Nickname is required"),
                                 ));
-                              } else {
-                                for (String s in mapPayment.keys) {
-                                  if (textEditingControllers['methodNickName']
-                                          .text
-                                          .toLowerCase() ==
-                                      s.toLowerCase()) {
-                                    setState(() {
-                                      textEditingControllers['methodNickName']
-                                          .text = 'images / Payment / $s.png';
-                                    });
-                                  } else {
-                                    _scaffoldState.currentState
-                                        .showSnackBar(SnackBar(
-                                      content: Text(
-                                          "Please enter valid Payment method nickname value"),
-                                    ));
-                                  }
-                                }
-                              }
+                              } 
                             },
                           ),
                         ),
@@ -223,11 +236,11 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                       ],
                     ),
                     Divider(thickness: 1, color: Colors.grey),
-                    getDropdown("BillingCycle", value1, billingCycle,3,1),
+                    getDropdown("BillingCycle", value1, billingCycle,3,2),
                     Divider(thickness: 1, color: Colors.grey),
-                    getDropdown("Payment Method Expiration", value2, expirationPayment, 4, 2),
-                    getDropdown("Payment Method Alert",value3,methodAlert,4,2),
-                    getDropdown("Payment Due Date Alert",value4,dueAlert,8,8),
+                    getDropdown("Payment Method Expiration", value2, expirationPayment, 3, 2),
+                    getDropdown("Payment Method Alert",value3,methodAlert,1,2),
+                    getDropdown("Payment Due Date Alert",value4,dueAlert,2,3),
                     getDropdown("Currency",value5,currency,5,1),
                     Row(
                       children: [
@@ -290,7 +303,8 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
                           helper.insert({
                             'billingName':
                                 textEditingControllers['billingName'].text,
-                            'visaImage':
+                            'visaImage':values,
+                            'myNickName':
                                 textEditingControllers['methodNickName'].text,
                             'billingDate':
                                 textEditingControllers['billingDate'].text,
@@ -320,7 +334,8 @@ class _CreditCardScreenState extends State<CreditCardScreen> {
           ),
         ),
       ),
-    );
+    )
+   );
   }
 
   getDropdown(String s, value1, List<String> billingCycle,int myValue,int myValue1) {

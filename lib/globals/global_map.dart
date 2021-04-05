@@ -8,18 +8,43 @@ Map<String, TextEditingController> textEditingControllers = {
   "note": TextEditingController(),
 };
 
-Map<String, dynamic> mapPayment = {
-  "Check": "images/Payment/Check.png",
-  "Bank Transfer": "images/Payment/Bank Transfer.png",
-  "Cash": "images/Payment/Cash.png",
-  "Discover": "images/Payment/Discover.png",
-  "PayPal": "images/Payment/PayPal.png",
-  "Visa": "images/Payment/Visa.png",
-  "Zelle": "images/Payment/Zelle.png",
-  "Mastercard": "images/Payment/Mastercard.png",
-  "Other": "images/Payment/Other.png",
-  "Amex": "images/Payment/Amex.png"
-};
+List<String> paymentImages=[
+  "images/Payment/Check.png",
+  
+  "images/Payment/Bank Transfer.png",
+  
+  "images/Payment/Cash.png",
+  
+  "images/Payment/PayPal.png",
+  
+  "images/Payment/Visa.png",
+  
+  "images/Payment/Zelle.png",
+  
+  "images/Payment/Mastercard.png",
+  
+  "images/Payment/Other.png",
+  
+  "images/Payment/Amex.png",
+];
+
+
+List<String> paymentNames=[
+  'Check','Bank Transfer','Cash','Discover','Paypal','Visa','Zelle',
+  'Mastercard','Other','Amex'
+];
+// Map<String, dynamic> mapPayment = {
+//   "Check": "images/Payment/Check.png",
+//   "Bank Transfer": "images/Payment/Bank Transfer.png",
+//   "Cash": "images/Payment/Cash.png",
+//   "Discover": "images/Payment/Discover.png",
+//   "PayPal": "images/Payment/PayPal.png",
+//   "Visa": "images/Payment/Visa.png",
+//   "Zelle": "images/Payment/Zelle.png",
+//   "Mastercard": "images/Payment/Mastercard.png",
+//   "Other": "images/Payment/Other.png",
+//   "Amex": "images/Payment/Amex.png"
+// };
 
 List<String> billingCycle = [
     'Monthly',
