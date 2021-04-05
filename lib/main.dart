@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:rekur_fluter/pages/splash_screen.dart';
 import 'globals/app_themes.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
