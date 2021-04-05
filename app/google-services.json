@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "725482758927",
+    "project_id": "rekur-fl",
+    "storage_bucket": "rekur-fl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725482758927:android:ec6c48f3b9b1def17c947a",
+        "android_client_info": {
+          "package_name": "com.example.rekur_fluter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "725482758927-ku18l9clvmqguhkcukb6o1l4n0re8rlf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rekur_fluter",
+            "certificate_hash": "061d84656edbeb62e45155d9c79514b2ec821ff0"
+          }
+        },
+        {
+          "client_id": "725482758927-1t5kpg9l252i9o30u22b413q9l7nkrce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDE8oXqkfLkJzh_JVtL13BHQf9oTFo4C30"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725482758927-1t5kpg9l252i9o30u22b413q9l7nkrce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
